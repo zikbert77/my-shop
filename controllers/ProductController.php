@@ -10,7 +10,7 @@ class ProductController {
         
         $product_id = $product_id;
         $product_info = Product::getProductInfo($product_id);
-        if($product_info){;
+        if($product_info){
             $meta_name = lcfirst($product_info['product_name']);
 
             $title = $product_info['product_name'] . ', ' . $product_info['category']['parent_name'] . ', ' . $product_info['category']['cat_name'];
