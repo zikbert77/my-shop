@@ -1,6 +1,6 @@
 <?php
    if(empty($title)){
-       $title = 'Brand City';
+       $title = SITE_NAME;
    }
 
     if(empty($child_title)){
@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php echo  $title . ' - Інтернет магазин Brand City' ; ?></title>
+    <title><?php echo  $title . ' - Інтернет магазин' ; ?></title>
     <?= isset($meta_name)? '<meta name="keywords" content="'. $meta_name .'">' : '' ?>
     <?= isset($meta_name)? '<meta name="description" content="'.$meta_name.' - купити на Brand City ☑ Найкраща ціна $">' : '' ?>
     <link href="/template/css/style.css" rel="stylesheet">
@@ -80,7 +80,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                        </button>
-                       <a href="/" class="navbar-brand">My shop</a>
+                       <a href="/" class="navbar-brand"><?= SITE_NAME ?></a>
                    </div>
                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                        <form method="post" action="/search/" class="navbar-form navbar-left hidden-xs" id="top-menu-search-form">

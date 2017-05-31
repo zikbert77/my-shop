@@ -17,6 +17,7 @@ session_start();
 
 $dirname = str_replace('\\', '/', dirname(__FILE__));
 define('ROOT', $dirname);
+define('SITE_NAME', 'Brand City');
 define('ERROR404', ROOT . '/views/404/404.php');
 define('MAX_FILE_SIZE', 30000);
 //Підключення файлів системи

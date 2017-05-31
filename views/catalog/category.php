@@ -40,7 +40,7 @@
                </div>
                <br>
                <div class="left-menu">
-                   <center><h1>Sorting</h1></center>
+                   <center><h1>Параметри</h1></center>
                    <hr>
                    <form>
 

@@ -139,9 +139,7 @@ class Category {
         $max_products = intval(self::SHOW_BY_DEFAULT);
         $page = intval($page);
         $offset = ($page - 1) * $max_products;
-
         $db = Db::getConnection();
-
         if ($sortType){
             if ($sortType == 'low_price'){
                 $sorting = ' ORDER BY price ASC';
@@ -154,31 +152,24 @@ class Category {
             } else {
                 $sorting = ' ORDER BY date ASC';
             }
-
             if(!empty($sort_query)){
                 $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             } else {
                 $sql = "SELECT * FROM products WHERE cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             }
-
-
         } else {
             if (!empty($sort_query)){
                 $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
             } else {
                 $sql = "SELECT * FROM products WHERE cat_id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
             }
-
         }
-
         $count_sql = "SELECT count(product_id) as count FROM products WHERE cat_id='$cat_id'";
-
-
         $result = $db->query($sql);
-        
+
         $productList = array();
         $i = 0;
-        
+
         while($row = $result->fetch_assoc()){
             $productList[$i]['product_id'] = $row['product_id'];
             $productList[$i]['product_name'] = $row['product_name'];
@@ -188,7 +179,6 @@ class Category {
             $productList[$i]['product_brand_id'] = $row['brand_id'];
             $i++;
         }
-
         return $productList;
     }
 
@@ -250,7 +240,7 @@ class Category {
     public static function createSortedArray($sorting){
 
         $segments = explode(';', $sorting);
-        $segments = array_diff($segments, array(''));
+        $segments = array_diff($segments, ['']);
         $sorted_array = [];
 
         for($i=0; $i<count($segments); $i++){
@@ -342,22 +332,39 @@ class Category {
             }
 
             if ($type == 'sort'){
-                $pattern = array('/low_price/', '/high_price/', '/new/', '/old/');
+                $pattern = ['/low_price/', '/high_price/', '/new/', '/old/'];
                 $sort_array[$type] = preg_replace($pattern, $value, $sort_array[$type]);
 
-            } elseif ($type == 'brand_id'){
+            } elseif ($type === 'brand_id'){
 
-                if (!is_array($sort_array[$type])){
+                if (isset($sort_array['brand_id']) && !empty($sort_array['brand_id']) && in_array($value, $sort_array['brand_id'])){
 
-                    $sort_array[$type] = array();
-                    $sort_array[$type][] = $value;
+                    for ($i=0; $i < count($sort_array['brand_id']); $i++){
+                        if ($sort_array['brand_id'][$i] === $value)
+                            unset($sort_array['brand_id'][$i]);
+                    }
+
+                    if (empty($sort_array['brand_id']))
+                        unset($sort_array['brand_id']);
 
                 } else {
-                    $sort_array[$type][] = $value;
-                    $sort_array[$type] = array_diff($sort_array[$type], array(''));
+
+                    if (!is_array($sort_array['brand_id'])){
+
+                        $sort_array['brand_id'] = [];
+                        $sort_array['brand_id'][] = $value;
+
+                    } else {
+
+                        $sort_array['brand_id'][] = $value;
+                        $sort_array['brand_id'] = array_diff($sort_array['brand_id'], ['']);
+                    }
+
                 }
 
-                $sort_array[$type] = array_unique($sort_array[$type]);
+                if(isset($sort_array['brand_id']))
+                    $sort_array['brand_id'] = array_unique($sort_array['brand_id']);
+
 
             }  else {
                 $sort_array[$type] = $value;
@@ -372,7 +379,7 @@ class Category {
 
             }
 
-            $url .= '/';
+            $url .= (!empty($sort_array))? '/' : '';
         } else {
             $url .= $type . '=' . $value .';/';
         }

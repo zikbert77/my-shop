@@ -1,7 +1,7 @@
 <div class="col-md-3 text-center left-admin-panel" style="padding-left: 0;">
                <div class="stacked">
                    <div class="main">
-                   <h1><a href="/">Site Name</a> </h1>
+                   <h1><a href="/"><?= SITE_NAME ?></a> </h1>
                    <hr>
                    <ul class="nav nav-pills nav-stacked">
                       <li role="presentation" <?= ($title=='Загальна інформація')? 'class="active"' : '' ?>><a href="/admin/main/">Загальна інформація</a></li>

@@ -27,14 +27,14 @@ class CatalogController {
 
     public function actionCategory($catAbbr, $childAbbr, $page_num=1, $sorting=false){
         $page = 'category';
-        
+
         $catAbbr = strip_tags(trim($catAbbr));
         $childAbbr = strip_tags(trim($childAbbr));
-        
+
         $categories = Category::getCategory();
         $title = Category::getTitle($catAbbr);
         $child_title = Category::getTitle($childAbbr);
-        
+
         $cat_id = Category::getCatId($childAbbr);
 
         //Pagination
@@ -80,8 +80,6 @@ class CatalogController {
 
         $pagination = new Pagination($countProducts, $page_num, Category::SHOW_BY_DEFAULT, 'page-');
 
-
-
         $getProductPrice = Category::getProductPrice($product_in_category);
         $max = max($getProductPrice);
         $min = min($getProductPrice);
@@ -89,9 +87,9 @@ class CatalogController {
 
         $page_link = '/category/' . $catAbbr . '/' . $childAbbr . '/page-' . $page_num . '/';
         $product_preview = $catAbbr . '/' .  $childAbbr . '/';
-        
 
-        
+
+
         if($countProducts == 1){
             $countProducts .= ' товар';
         } else if ($countProducts == 2){
@@ -101,7 +99,7 @@ class CatalogController {
         } else {
             $countProducts .= ' товарів';
         }
-        
+
         require_once(ROOT . '/views/catalog/category.php');
         return true;
     }
