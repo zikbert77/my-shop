@@ -329,46 +329,49 @@ class Category {
 
             if (!isset($sort_array[$type])){
                 $sort_array[$type] = $value;
-            }
+            } else {
+                if ($type == 'sort'){
+                    $pattern = ['/low_price/', '/high_price/', '/new/', '/old/'];
+                    $sort_array[$type] = preg_replace($pattern, $value, $sort_array[$type]);
 
-            if ($type == 'sort'){
-                $pattern = ['/low_price/', '/high_price/', '/new/', '/old/'];
-                $sort_array[$type] = preg_replace($pattern, $value, $sort_array[$type]);
+                } elseif ($type == 'brand_id'){
 
-            } elseif ($type === 'brand_id'){
 
-                if (isset($sort_array['brand_id']) && !empty($sort_array['brand_id']) && in_array($value, $sort_array['brand_id'])){
+                    if (isset($sort_array['brand_id']) && !empty($sort_array['brand_id']) && in_array($value, $sort_array['brand_id'])){
 
-                    for ($i=0; $i < count($sort_array['brand_id']); $i++){
-                        if ($sort_array['brand_id'][$i] === $value)
-                            unset($sort_array['brand_id'][$i]);
-                    }
+                        for ($i=0; $i < count($sort_array['brand_id']); $i++){
+                            if ($sort_array['brand_id'][$i] === $value)
+                                unset($sort_array['brand_id'][$i]);
+                        }
 
-                    if (empty($sort_array['brand_id']))
-                        unset($sort_array['brand_id']);
-
-                } else {
-
-                    if (!is_array($sort_array['brand_id'])){
-
-                        $sort_array['brand_id'] = [];
-                        $sort_array['brand_id'][] = $value;
+                        if (empty($sort_array['brand_id']))
+                            unset($sort_array['brand_id']);
 
                     } else {
 
-                        $sort_array['brand_id'][] = $value;
-                        $sort_array['brand_id'] = array_diff($sort_array['brand_id'], ['']);
+                        if (!is_array($sort_array['brand_id'])){
+
+                            $sort_array['brand_id'] = [];
+                            $sort_array['brand_id'][] = $value;
+
+                        } else {
+
+                            $sort_array['brand_id'][] = $value;
+                            $sort_array['brand_id'] = array_diff($sort_array['brand_id'], ['']);
+                        }
+
                     }
 
+                    if(isset($sort_array['brand_id']) && !empty($sort_array['brand_id']))
+                        $sort_array['brand_id'] = array_unique($sort_array['brand_id']);
+
+
+                }  else {
+                    $sort_array[$type] = $value;
                 }
-
-                if(isset($sort_array['brand_id']))
-                    $sort_array['brand_id'] = array_unique($sort_array['brand_id']);
-
-
-            }  else {
-                $sort_array[$type] = $value;
             }
+
+
 
             foreach ($sort_array as $key => $value){
                 if(is_array($value)){
@@ -383,6 +386,8 @@ class Category {
         } else {
             $url .= $type . '=' . $value .';/';
         }
+
+        $url = preg_replace('/[\r\n\t]/', '', $url);
 
         return $url;
     }

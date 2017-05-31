@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8336fba8-ae98-4b33-988d-316f9a70b873" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/CatalogController.php" afterPath="$PROJECT_DIR$/controllers/CatalogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Category.php" afterPath="$PROJECT_DIR$/models/Category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/catalog/category.php" afterPath="$PROJECT_DIR$/views/catalog/category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout/admin_left_menu.php" afterPath="$PROJECT_DIR$/views/layout/admin_left_menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout/header.php" afterPath="$PROJECT_DIR$/views/layout/header.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,18 +39,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/ProductController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-              <folding>
-                <element signature="n#actionView#0;n#ProductController#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CatalogController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/CatalogController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,8 +54,8 @@
       <file leaf-file-name="Category.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/Category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="339" column="84" lean-forward="false" selection-start-line="339" selection-start-column="84" selection-end-line="339" selection-end-column="84" />
+            <state relative-caret-position="415">
+              <caret line="354" column="52" lean-forward="true" selection-start-line="354" selection-start-column="52" selection-end-line="354" selection-end-column="52" />
               <folding>
                 <element signature="n#getCategory#0;n#Category#0;n#!!top" expanded="false" />
                 <element signature="n#getChild#0;n#Category#0;n#!!top" expanded="false" />
@@ -85,21 +68,22 @@
                 <element signature="n#getBrands#0;n#Category#0;n#!!top" expanded="false" />
                 <element signature="n#getProductPrice#0;n#Category#0;n#!!top" expanded="false" />
                 <element signature="n#getMaxPrice#0;n#Category#0;n#!!top" expanded="false" />
+                <element signature="n#createSortedArray#0;n#Category#0;n#!!top" expanded="false" />
                 <element signature="n#createSortQuery#0;n#Category#0;n#!!top" expanded="false" />
-                <marker date="1496236908592" expanded="true" signature="250:291" ph="SELECT * FRO... categories" />
-                <marker date="1496236908592" expanded="true" signature="2594:2666" ph="SELECT cat_n... categories" />
-                <marker date="1496236908592" expanded="true" signature="2918:2974" ph="SELECT cat_i... categories" />
-                <marker date="1496236908592" expanded="true" signature="3214:3268" ph="SELECT cat_a... categories" />
-                <marker date="1496236908592" expanded="true" signature="3500:3552" ph="SELECT paren... categories" />
-                <marker date="1496236908592" expanded="true" signature="4492:4597" ph="SELECT * FRO... products" />
-                <marker date="1496236908592" expanded="true" signature="4652:4741" ph="SELECT * FRO... products" />
-                <marker date="1496236908592" expanded="true" signature="4844:4952" ph="SELECT * FRO... products" />
-                <marker date="1496236908592" expanded="true" signature="5007:5099" ph="SELECT * FRO... products" />
-                <marker date="1496236908592" expanded="true" signature="5155:5225" ph="SELECT count... " />
-                <marker date="1496236908592" expanded="true" signature="6001:6086" ph="SELECT count... " />
-                <marker date="1496236908592" expanded="true" signature="6126:6196" ph="SELECT count... " />
-                <marker date="1496236908592" expanded="true" signature="6464:6491" ph="SELECT * FRO... produc" />
-                <marker date="1496236908592" expanded="true" signature="6464:6515" ph="SELECT * FRO... products" />
+                <marker date="1496247204667" expanded="true" signature="250:291" ph="SELECT * FRO... categories" />
+                <marker date="1496247204667" expanded="true" signature="2594:2666" ph="SELECT cat_n... categories" />
+                <marker date="1496247204667" expanded="true" signature="2918:2974" ph="SELECT cat_i... categories" />
+                <marker date="1496247204667" expanded="true" signature="3214:3268" ph="SELECT cat_a... categories" />
+                <marker date="1496247204667" expanded="true" signature="3500:3552" ph="SELECT paren... categories" />
+                <marker date="1496247204667" expanded="true" signature="4492:4597" ph="SELECT * FRO... products" />
+                <marker date="1496247204667" expanded="true" signature="4652:4741" ph="SELECT * FRO... products" />
+                <marker date="1496247204667" expanded="true" signature="4844:4952" ph="SELECT * FRO... products" />
+                <marker date="1496247204667" expanded="true" signature="5007:5099" ph="SELECT * FRO... products" />
+                <marker date="1496247204667" expanded="true" signature="5155:5225" ph="SELECT count... " />
+                <marker date="1496247204667" expanded="true" signature="6001:6086" ph="SELECT count... " />
+                <marker date="1496247204667" expanded="true" signature="6126:6196" ph="SELECT count... " />
+                <marker date="1496247204667" expanded="true" signature="6464:6491" ph="SELECT * FRO... produc" />
+                <marker date="1496247204667" expanded="true" signature="6464:6515" ph="SELECT * FRO... products" />
               </folding>
             </state>
           </provider>
@@ -108,21 +92,11 @@
       <file leaf-file-name="category.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/catalog/category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+            <state relative-caret-position="1116">
+              <caret line="62" column="295" lean-forward="false" selection-start-line="62" selection-start-column="295" selection-end-line="62" selection-end-column="295" />
               <folding>
                 <marker date="1494851019622" expanded="false" signature="6080:6086" ph=" " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout/footer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -205,7 +179,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -326,6 +299,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -469,12 +443,13 @@
       <workItem from="1494849959040" duration="1977000" />
       <workItem from="1494861888065" duration="610000" />
       <workItem from="1495128439160" duration="1964000" />
-      <workItem from="1496234857316" duration="2044000" />
+      <workItem from="1496234857316" duration="3171000" />
+      <workItem from="1496247017787" duration="194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135840000" />
+    <option name="totallyTimeSpent" value="137161000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -907,16 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding>
-            <element signature="n#actionView#0;n#ProductController#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout/footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -925,12 +890,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/catalog/category.php">
+    <entry file="file://$PROJECT_DIR$/controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        <state relative-caret-position="144">
+          <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
           <folding>
-            <marker date="1494851019622" expanded="false" signature="6080:6086" ph=" " />
+            <element signature="n#actionView#0;n#ProductController#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -947,8 +912,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/Category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="339" column="84" lean-forward="false" selection-start-line="339" selection-start-column="84" selection-end-line="339" selection-end-column="84" />
+        <state relative-caret-position="415">
+          <caret line="354" column="52" lean-forward="true" selection-start-line="354" selection-start-column="52" selection-end-line="354" selection-end-column="52" />
           <folding>
             <element signature="n#getCategory#0;n#Category#0;n#!!top" expanded="false" />
             <element signature="n#getChild#0;n#Category#0;n#!!top" expanded="false" />
@@ -961,21 +926,32 @@
             <element signature="n#getBrands#0;n#Category#0;n#!!top" expanded="false" />
             <element signature="n#getProductPrice#0;n#Category#0;n#!!top" expanded="false" />
             <element signature="n#getMaxPrice#0;n#Category#0;n#!!top" expanded="false" />
+            <element signature="n#createSortedArray#0;n#Category#0;n#!!top" expanded="false" />
             <element signature="n#createSortQuery#0;n#Category#0;n#!!top" expanded="false" />
-            <marker date="1496236908592" expanded="true" signature="250:291" ph="SELECT * FRO... categories" />
-            <marker date="1496236908592" expanded="true" signature="2594:2666" ph="SELECT cat_n... categories" />
-            <marker date="1496236908592" expanded="true" signature="2918:2974" ph="SELECT cat_i... categories" />
-            <marker date="1496236908592" expanded="true" signature="3214:3268" ph="SELECT cat_a... categories" />
-            <marker date="1496236908592" expanded="true" signature="3500:3552" ph="SELECT paren... categories" />
-            <marker date="1496236908592" expanded="true" signature="4492:4597" ph="SELECT * FRO... products" />
-            <marker date="1496236908592" expanded="true" signature="4652:4741" ph="SELECT * FRO... products" />
-            <marker date="1496236908592" expanded="true" signature="4844:4952" ph="SELECT * FRO... products" />
-            <marker date="1496236908592" expanded="true" signature="5007:5099" ph="SELECT * FRO... products" />
-            <marker date="1496236908592" expanded="true" signature="5155:5225" ph="SELECT count... " />
-            <marker date="1496236908592" expanded="true" signature="6001:6086" ph="SELECT count... " />
-            <marker date="1496236908592" expanded="true" signature="6126:6196" ph="SELECT count... " />
-            <marker date="1496236908592" expanded="true" signature="6464:6491" ph="SELECT * FRO... produc" />
-            <marker date="1496236908592" expanded="true" signature="6464:6515" ph="SELECT * FRO... products" />
+            <marker date="1496247204667" expanded="true" signature="250:291" ph="SELECT * FRO... categories" />
+            <marker date="1496247204667" expanded="true" signature="2594:2666" ph="SELECT cat_n... categories" />
+            <marker date="1496247204667" expanded="true" signature="2918:2974" ph="SELECT cat_i... categories" />
+            <marker date="1496247204667" expanded="true" signature="3214:3268" ph="SELECT cat_a... categories" />
+            <marker date="1496247204667" expanded="true" signature="3500:3552" ph="SELECT paren... categories" />
+            <marker date="1496247204667" expanded="true" signature="4492:4597" ph="SELECT * FRO... products" />
+            <marker date="1496247204667" expanded="true" signature="4652:4741" ph="SELECT * FRO... products" />
+            <marker date="1496247204667" expanded="true" signature="4844:4952" ph="SELECT * FRO... products" />
+            <marker date="1496247204667" expanded="true" signature="5007:5099" ph="SELECT * FRO... products" />
+            <marker date="1496247204667" expanded="true" signature="5155:5225" ph="SELECT count... " />
+            <marker date="1496247204667" expanded="true" signature="6001:6086" ph="SELECT count... " />
+            <marker date="1496247204667" expanded="true" signature="6126:6196" ph="SELECT count... " />
+            <marker date="1496247204667" expanded="true" signature="6464:6491" ph="SELECT * FRO... produc" />
+            <marker date="1496247204667" expanded="true" signature="6464:6515" ph="SELECT * FRO... products" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/catalog/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="62" column="295" lean-forward="false" selection-start-line="62" selection-start-column="295" selection-end-line="62" selection-end-column="295" />
+          <folding>
+            <marker date="1494851019622" expanded="false" signature="6080:6086" ph=" " />
           </folding>
         </state>
       </provider>
