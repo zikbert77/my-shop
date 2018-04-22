@@ -18,7 +18,7 @@ a.btn-primary:hover, button.btn-primary:hover {
     background: #5050ff;
 } 
 
-a.btn-danger, button.btn-danger, a.btn-warning, button.btn-warning {
+a.btn-danger, button.btn-danger, a.btn-warning, button.btn-warning, a.btn-success, button.btn-success {
     border: none;
     transition: all 0.5s;
 }

@@ -43,11 +43,11 @@ class Pagination
     private $limit;
 
     /**
-     * Запуск необходимых данных для навигации
-     * @param integer $total - общее количество записей
-     * @param integer $limit - количество записей на страницу
-     *
-     * @return
+     * Pagination constructor.
+     * @param $total
+     * @param $currentPage
+     * @param $limit
+     * @param $index
      */
     public function __construct($total, $currentPage, $limit, $index)
     {
@@ -134,8 +134,13 @@ class Pagination
         }
 
         $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
+
+        if(!preg_match('~(/page-[0-9]+)~', "$currentURI"))
+            $currentURI .= 'page-1';
+
         $page = '/' . $this->index . $page;
         $currentURI = preg_replace('~(/page-[0-9]+)~', "$page", $currentURI);
+
         # Формируем HTML код ссылки и возвращаем
 
         return '<li><a href="' . $currentURI . '">' . $text . '</a></li>';
