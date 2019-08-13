@@ -4,7 +4,7 @@ return array(
             'host' => 'localhost',
             'user' => 'root',
             'password' => '',
-            'db_name' => 'ONLINE_SHOP',
+            'db_name' => 'shop',
 );
 
 /*return array(
