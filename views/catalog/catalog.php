@@ -40,20 +40,20 @@
                            <div class="goods">
                                <div class="row">
                                    <?php foreach($categories as $cat): ?>
-                                         <?php if($cat['cat_name'] == $title): ?>
+                                         <?php if($cat['title'] == $title): ?>
                                             <?php foreach($categories as $child): ?>
-                                                <?php if($child['parent'] == $cat['cat_id']): ?>
-                                                    <a href="/category/<?php echo $cat['cat_abbr'] . '/' . $child['cat_abbr'] . '/page-1' ?>/" class="main-page-a">
+                                                <?php if($child['parent'] == $cat['id']): ?>
+                                                    <a href="/category/<?php echo $cat['abbr'] . '/' . $child['abbr'] . '/page-1' ?>/" class="main-page-a">
                                                         <div class="col-md-4 banner">
                                                             <div class="wrapper">
                                                                  <div class="img">
                                                                      <div class="mask"></div>
-                                                                     <img src="/template/img/catalog/<?php echo $child['image']; ?>" alt="">
+                                                                     <img src="/template/img/catalog/<?php echo $child['img']; ?>" alt="">
                                                                  </div>
                                                                  <div class="description">
                                                                     <p><?php 
                                                                         $short = array();
-                                                                        $short = explode(',', $child['cat_name']);
+                                                                        $short = explode(',', $child['title']);
                                                                         echo $short[0];
                                                                     ?></p>
                                                                  </div>
@@ -64,19 +64,13 @@
                                                 <?php endif; ?>
                                             <?php endforeach; ?>
                                         <?php endif; ?>      
-                                    <?php endforeach; ?>    
-                                                                    
-                                 
+                                    <?php endforeach; ?>
                                </div>
                            </div>
-                           
                        </div>
                    </div>
                </div>
            </div>
-           
-
-           
        </div>
    </div>
    

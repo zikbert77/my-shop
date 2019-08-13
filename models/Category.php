@@ -3,12 +3,10 @@ include_once(ROOT . '/models/Product.php');
 
 class Category
 {
-
     const SHOW_BY_DEFAULT = 12;
 
     public static function getCategory()
     {
-
         $db = Db::getConnection();
 
         $categoryList = array();
@@ -17,35 +15,29 @@ class Category
         $result = $db->query($sql);
 
         $i = 0;
-
         while ($row = $result->fetch_assoc()) {
-            $categoryList[$i]['cat_id'] = $row['cat_id'];
-            $categoryList[$i]['cat_name'] = $row['cat_name'];
-            $categoryList[$i]['cat_abbr'] = $row['cat_abbr'];
+            $categoryList[$i]['id'] = $row['id'];
+            $categoryList[$i]['title'] = $row['title'];
+            $categoryList[$i]['abbr'] = $row['abbr'];
             $categoryList[$i]['parent'] = $row['parent'];
-            if ($row['cat_img'] != null) {
-                $categoryList[$i]['image'] = $row['cat_img'];
+            if ($row['img'] != null) {
+                $categoryList[$i]['image'] = $row['img'];
             }
             $i++;
         }
 
         $cat = Category::getChild($categoryList);
-
         $count_cat_list = count($categoryList);
         $count_cat = count($cat);
-
         for ($i = 0; $i < $count_cat_list; $i++) {
-
             foreach ($cat as $key => $value) {
-                if (($categoryList[$i]['cat_id'] == $key) && !empty($value)) {
+                if (($categoryList[$i]['id'] == $key) && !empty($value)) {
                     $categoryList[$i]['child'] = $value;
                 }
             }
-
-
         }
-        return $categoryList;
 
+        return $categoryList;
     }
 
     public static function getChild($categoryList)
@@ -58,7 +50,7 @@ class Category
         //Визначаємо батьків
         foreach ($categoryList as $key => $category) {
             if ($category['parent'] == 0) {
-                $parentsIds[] = $category['cat_id'];
+                $parentsIds[] = $category['id'];
             }
         }
 
@@ -72,7 +64,7 @@ class Category
 
             for ($j = 0; $j < $count_category; $j++) {
                 if ($parentsIds[$i] == $categoryList[$j]['parent']) {
-                    array_push($parents[$i], $categoryList[$j]['cat_abbr']);
+                    array_push($parents[$i], $categoryList[$j]['abbr']);
                 }
             }
 
@@ -93,36 +85,33 @@ class Category
 
     public static function getTitle($catAbbr)
     {
-
         $db = Db::getConnection();
 
-        $categoryList = array();
-
-        $sql = "SELECT cat_name FROM categories WHERE status='1' AND cat_abbr='$catAbbr'";
+        $sql = "SELECT title FROM categories WHERE status='1' AND abbr='$catAbbr'";
         $result = $db->query($sql);
 
         $title = $result->fetch_assoc();
 
-        return $title['cat_name'];
+        return $title['title'];
     }
 
     public static function getCatId($cat_abbr)
     {
         $db = Db::getConnection();
 
-        $sql = "SELECT cat_id FROM categories WHERE cat_abbr='$cat_abbr'";
+        $sql = "SELECT id FROM categories WHERE abbr='$cat_abbr'";
         $result = $db->query($sql);
 
         $cat_id = $result->fetch_assoc();
 
-        return $cat_id['cat_id'];
+        return $cat_id['id'];
     }
 
     public static function getCatAbbr($cat_id)
     {
         $db = Db::getConnection();
 
-        $sql = "SELECT cat_abbr FROM categories WHERE cat_id='$cat_id'";
+        $sql = "SELECT cat_abbr FROM categories WHERE id='$cat_id'";
         $result = $db->query($sql);
 
         $cat_abbr = $result->fetch_assoc();
@@ -134,7 +123,7 @@ class Category
     {
         $db = Db::getConnection();
 
-        $sql = "SELECT parent FROM categories WHERE cat_id='$cat_id'";
+        $sql = "SELECT parent FROM categories WHERE id='$cat_id'";
         $result = $db->query($sql);
 
         $cat_abbr = $result->fetch_assoc();
@@ -162,18 +151,18 @@ class Category
                 $sorting = ' ORDER BY date ASC';
             }
             if (!empty($sort_query)) {
-                $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE $sort_query AND id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             } else {
-                $sql = "SELECT * FROM products WHERE cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             }
         } else {
             if (!empty($sort_query)) {
-                $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE $sort_query AND id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
             } else {
-                $sql = "SELECT * FROM products WHERE cat_id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
             }
         }
-        $count_sql = "SELECT count(product_id) as count FROM products WHERE cat_id='$cat_id'";
+        $count_sql = "SELECT count(product_id) as count FROM products WHERE id='$cat_id'";
         $result = $db->query($sql);
 
         $productList = array();
@@ -197,9 +186,9 @@ class Category
         $db = Db::getConnection();
 
         if ($sortQuery) {
-            $sql = "SELECT count(product_id) as count FROM products WHERE $sortQuery AND cat_id='$cat_id'";
+            $sql = "SELECT count(product_id) as count FROM products WHERE $sortQuery AND id='$cat_id'";
         } else {
-            $sql = "SELECT count(product_id) as count FROM products WHERE cat_id='$cat_id'";
+            $sql = "SELECT count(product_id) as count FROM products WHERE id='$cat_id'";
         }
 
         $result = $db->query($sql);
@@ -215,7 +204,7 @@ class Category
 
         $db = Db::getConnection();
 
-        $sql = "SELECT brand_id FROM products WHERE cat_id='$catId'";
+        $sql = "SELECT brand_id FROM products WHERE id='$catId'";
 
         $result = $db->query($sql);
 

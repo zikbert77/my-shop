@@ -1,21 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of User
- *
- * @author zikbe
- */
 class User
 {
     public static function getUser($email, $pass)
     {
-
         $db = Db::getConnection();
 
         $sql = "SELECT * FROM users WHERE email='$email' AND pass='$pass'";
@@ -32,7 +20,6 @@ class User
 
     public static function getUserInfo($id)
     {
-
         $db = Db::getConnection();
 
         $sql = "SELECT * FROM users WHERE id='$id'";
@@ -55,10 +42,10 @@ class User
 
         $sql = "SELECT * FROM orders WHERE id='$id' ORDER BY order_date DESC";
         $result = $db->query($sql);
-        $i = 0;
 
+        $i = 0;
         while ($row = $result->fetch_assoc()) {
-            $orders[$i]['order_id'] = $row['order_id'];
+            $orders[$i]['order_id'] = $row['id'];
             $orders[$i]['order_info'] = json_decode($row['order_info']);
             $orders[$i]['order_date'] = $row['order_date'];
             $orders[$i]['order_status'] = $row['order_status'];
@@ -72,10 +59,7 @@ class User
 
     public static function validateName($name)
     {
-
-
         if (strlen($name) < 25) {
-
             return true;
         }
 
@@ -84,10 +68,7 @@ class User
 
     public static function validatePhoneLen($phone)
     {
-
-
         if (strlen($phone) == 10) {
-
             return true;
         }
 
@@ -96,10 +77,7 @@ class User
 
     public static function validatePhone($phone)
     {
-
-
         if (preg_match("/([0-9]+)/", $phone)) {
-
             return true;
         }
 
@@ -108,7 +86,6 @@ class User
 
     public static function validateEmail($email)
     {
-
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
         }
@@ -132,17 +109,16 @@ class User
 
     public static function validatePassRegister($pass)
     {
-
         if (preg_match("/[a-zA-Z]/", $pass)) {
             return true;
         }
+
         return false;
     }
 
 
     public static function userRegister($name, $email, $pass)
     {
-
         $db = Db::getConnection();
 
         $pass = md5($pass);

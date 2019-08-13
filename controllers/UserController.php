@@ -26,7 +26,7 @@ class UserController
             $title = 'Профіль користувача ' . $_SESSION['u_name'];
 
             $user_info = User::getUserInfo($_SESSION['u_id']);
-            $user_orders = User::getOrdersByID($user_info['u_id']);
+            $user_orders = User::getOrdersByID($user_info['id']);
 
             //echo $user_orders[0]['order_info']->user_phone;
 

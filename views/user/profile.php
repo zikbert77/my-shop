@@ -8,7 +8,7 @@
               <div class="main" style="border-right: 1px solid #ccc;">
                   <div class="row">
                       <div class="col-md-12">
-                          <h1><?php echo $user_info['u_name'] . ' ' . $user_info['u_surname']; ?></h1>
+                          <h1><?php echo $user_info['first_name'] . ' ' . $user_info['last_name']; ?></h1>
                           <hr />
                           <div class="row">
                               <div class="col-md-3">
