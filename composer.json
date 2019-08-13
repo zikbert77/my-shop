@@ -6,5 +6,7 @@
             "email": "bogdan@hosteeva.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php-database-migration/php-database-migration": "^3.8"
+    }
 }
