@@ -123,7 +123,7 @@ class User
 
         $pass = md5($pass);
 
-        $sql = "INSERT INTO users(name, email, pass, created_at) VALUES('$name', '$email', '$pass', NOW())";
+        $sql = "INSERT INTO users(first_name, email, pass, created_at) VALUES('$name', '$email', '$pass', NOW())";
         $result = $db->query($sql) or die(mysql_error($db));
 
         return true;

@@ -72,8 +72,8 @@ class Admin {
         $i = 0;
 
         while($row = $result->fetch_assoc()){
-            $cat[$i]['cat_id'] = $row['cat_id'];
-            $cat[$i]['cat_name'] = $row['cat_name'];
+            $cat[$i]['cat_id'] = $row['id'];
+            $cat[$i]['cat_name'] = $row['title'];
             $i++;
         }
 
@@ -90,7 +90,7 @@ class Admin {
         $i = 0;
 
         while($row = $result->fetch_assoc()){
-            $cat[$i]['brand_id'] = $row['brand_id'];
+            $cat[$i]['brand_id'] = $row['id'];
             $cat[$i]['brand_name'] = $row['brand_name'];
             $i++;
         }
@@ -101,7 +101,7 @@ class Admin {
     public static function getUserByThisMonth(){
         $db = Db::getConnection();
 
-        $sql = "select u_id from user where date_format(u_reg_date, '%Y%m%d') = date_format(now(), '%Y%m%d')";
+        $sql = "select id from users where date_format(created_at, '%Y%m%d') = date_format(now(), '%Y%m%d')";
 
         $result = $db->query($sql);
         $i = 0;

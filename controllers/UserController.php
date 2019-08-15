@@ -51,7 +51,7 @@ class UserController
 
                 if ($user) {
                     $_SESSION['u_id'] = $user['id'];
-                    $_SESSION['u_name'] = $user['name'];
+                    $_SESSION['u_name'] = $user['first_name'];
                     if ($user['status'] == 1) {
                         $_SESSION['admin_id'] = $user['id'];
                     }
