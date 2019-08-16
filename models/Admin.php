@@ -31,7 +31,7 @@ class Admin {
         $i = 0;
 
         while($row = $result->fetch_assoc()){
-            $productList[$i]['product_id'] = $row['product_id'];
+            $productList[$i]['product_id'] = $row['id'];
             $productList[$i]['product_name'] = $row['product_name'];
             $productList[$i]['product_price'] = $row['price'];
             $productList[$i]['product_old_price'] = $row['old_price'];
@@ -53,8 +53,8 @@ class Admin {
         $i = 0;
 
         while($row = $result->fetch_assoc()){
-            $cat[$i]['cat_id'] = $row['cat_id'];
-            $cat[$i]['cat_name'] = $row['cat_name'];
+            $cat[$i]['cat_id'] = $row['id'];
+            $cat[$i]['cat_name'] = $row['title'];
             $i++;
         }
 
@@ -91,7 +91,7 @@ class Admin {
 
         while($row = $result->fetch_assoc()){
             $cat[$i]['brand_id'] = $row['id'];
-            $cat[$i]['brand_name'] = $row['brand_name'];
+            $cat[$i]['brand_name'] = $row['title'];
             $i++;
         }
 
@@ -158,10 +158,11 @@ class Admin {
     public static function addProduct($product_info){
         $db = Db::getConnection();
 
-        $sql = "INSERT INTO products(product_name, cat_id, code, price, brand_id, country, description, date) " .
+        $sql = "INSERT INTO products(product_name, cat_id, code, price, brand_id, country, description, created_at) " .
         "VALUES('{$product_info['p_name']}', '{$product_info['p_type']}', '{$product_info['p_code']}', '{$product_info['p_price']}', " .
             "'{$product_info['p_brand']}', '{$product_info['p_country']}', '{$product_info['p_descr']}', NOW())";
-        $result = $db->query($sql) or die('Erorr to add product');
+        $result = $db->query($sql);
+
         $id = $db->insert_id;
         if($id != 0){
             return $id;

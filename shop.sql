@@ -26,7 +26,7 @@ CREATE TABLE `brands` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `brands` (
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
+INSERT INTO `brands` VALUES (1,'brand 1');
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,6 +95,31 @@ LOCK TABLES `orders` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product_sizes`
+--
+
+DROP TABLE IF EXISTS `product_sizes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_sizes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `product_size` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_sizes`
+--
+
+LOCK TABLES `product_sizes` WRITE;
+/*!40000 ALTER TABLE `product_sizes` DISABLE KEYS */;
+INSERT INTO `product_sizes` VALUES (1,2,'{\"XS\":\"0\",\"S\":\"1\",\"M\":\"123\",\"L\":\"0\",\"XL\":\"0\",\"XXL\":\"0\"}'),(2,3,'{\"XS\":\"0\",\"S\":\"1\",\"M\":\"123\",\"L\":\"0\",\"XL\":\"0\",\"XXL\":\"0\"}');
+/*!40000 ALTER TABLE `product_sizes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `products`
 --
 
@@ -106,12 +132,14 @@ CREATE TABLE `products` (
   `cat_id` int(11) DEFAULT NULL,
   `code` int(11) DEFAULT NULL,
   `price` float DEFAULT NULL,
+  `old_price` float DEFAULT NULL,
   `brand_id` int(11) DEFAULT NULL,
   `country` varchar(60) DEFAULT NULL,
   `description` text DEFAULT NULL,
+  `availability` tinyint(4) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,6 +148,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'Test futbolka',2,1,122,NULL,1,'safdsaf','Опис',1,'2019-08-16 15:43:40'),(2,'Test futbolka123',2,2,122,NULL,1,'safdsaf','Опис',1,'2019-08-16 15:44:48'),(3,'Test futbolka1231',2,3,122,NULL,1,'safdsaf','Опис',1,'2019-08-16 15:45:08');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,6 +165,7 @@ CREATE TABLE `users` (
   `last_name` varchar(30) DEFAULT NULL,
   `email` varchar(60) NOT NULL,
   `pass` varchar(32) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
@@ -148,7 +178,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Bohdan',NULL,'zikbert77@gmail.com','36c6a70c53df9d42f86dc4f8c584c43f',1,'2019-08-13 18:22:02'),(2,'test',NULL,'test@gmail.com','36c6a70c53df9d42f86dc4f8c584c43f',0,'2019-08-15 12:07:47');
+INSERT INTO `users` VALUES (1,'Bohdan',NULL,'zikbert77@gmail.com','36c6a70c53df9d42f86dc4f8c584c43f',NULL,1,'2019-08-13 18:22:02'),(2,'test',NULL,'test@gmail.com','36c6a70c53df9d42f86dc4f8c584c43f',NULL,0,'2019-08-15 12:07:47');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -161,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-15 12:18:22
+-- Dump completed on 2019-08-16 16:09:41

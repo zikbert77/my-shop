@@ -24,7 +24,7 @@ class NP {
  	/* Телефон отправителя */	 
 	 public static $out_phone='0993086345';	 
  	/* API ключ */	 
-	 public static $api_key='01c23ee0029991fd5691b0088c89988c';	 
+	 public static $api_key='6cfb655dd2a8d9835bdd2257e997f6bd';
  	/* Описание посылки */	 
 	 public static $description='Одяг';
  	/* Описание упаковки */	 

@@ -111,12 +111,12 @@ class Category
     {
         $db = Db::getConnection();
 
-        $sql = "SELECT cat_abbr FROM categories WHERE id='$cat_id'";
+        $sql = "SELECT abbr FROM categories WHERE id='$cat_id'";
         $result = $db->query($sql);
 
         $cat_abbr = $result->fetch_assoc();
 
-        return $cat_abbr['cat_abbr'];
+        return $cat_abbr['abbr'];
     }
 
     public static function getCatParent($cat_id)
@@ -144,32 +144,32 @@ class Category
             } elseif ($sortType == 'high_price') {
                 $sorting = ' ORDER BY price DESC';
             } elseif ($sortType == 'new') {
-                $sorting = ' ORDER BY date DESC';
+                $sorting = ' ORDER BY created_at DESC';
             } elseif ($sortType == 'old') {
-                $sorting = ' ORDER BY date ASC';
+                $sorting = ' ORDER BY created_at ASC';
             } else {
-                $sorting = ' ORDER BY date ASC';
+                $sorting = ' ORDER BY created_at ASC';
             }
             if (!empty($sort_query)) {
-                $sql = "SELECT * FROM products WHERE $sort_query AND id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             } else {
-                $sql = "SELECT * FROM products WHERE id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE cat_id='$cat_id'" . $sorting . " LIMIT $max_products OFFSET $offset";
             }
         } else {
             if (!empty($sort_query)) {
-                $sql = "SELECT * FROM products WHERE $sort_query AND id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE $sort_query AND cat_id='$cat_id' ORDER BY created_at DESC LIMIT $max_products OFFSET $offset";
             } else {
-                $sql = "SELECT * FROM products WHERE id='$cat_id' ORDER BY date DESC LIMIT $max_products OFFSET $offset";
+                $sql = "SELECT * FROM products WHERE cat_id='$cat_id' ORDER BY created_at DESC LIMIT $max_products OFFSET $offset";
             }
         }
-        $count_sql = "SELECT count(product_id) as count FROM products WHERE id='$cat_id'";
+        $count_sql = "SELECT count(product_id) as count FROM products WHERE cat_id='$cat_id'";
+
         $result = $db->query($sql);
 
         $productList = array();
         $i = 0;
-
         while ($row = $result->fetch_assoc()) {
-            $productList[$i]['product_id'] = $row['product_id'];
+            $productList[$i]['product_id'] = $row['id'];
             $productList[$i]['product_name'] = $row['product_name'];
             $productList[$i]['product_price'] = $row['price'];
             $productList[$i]['product_old_price'] = $row['old_price'];
@@ -186,9 +186,9 @@ class Category
         $db = Db::getConnection();
 
         if ($sortQuery) {
-            $sql = "SELECT count(product_id) as count FROM products WHERE $sortQuery AND id='$cat_id'";
+            $sql = "SELECT count(id) as count FROM products WHERE $sortQuery AND cat_id='$cat_id'";
         } else {
-            $sql = "SELECT count(product_id) as count FROM products WHERE id='$cat_id'";
+            $sql = "SELECT count(id) as count FROM products WHERE cat_id='$cat_id'";
         }
 
         $result = $db->query($sql);

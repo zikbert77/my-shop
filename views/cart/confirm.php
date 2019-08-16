@@ -37,15 +37,15 @@
                             <div class="col-md-6">
                                <p>
                                    <label for="user-name">Ім'я:</label>
-                                   <input type="text" class="form-control" value="<?= isset($user_info) ? $user_info['u_name'] : '' ?>" name="user-name" placeholder="Ім'я" required="required">
+                                   <input type="text" class="form-control" value="<?= isset($user_info) ? $user_info['first_name'] : '' ?>" name="user-name" placeholder="Ім'я" required="required">
                                </p>
                                <p>
                                    <label for="user-surname">Фамілія:</label>
-                                   <input type="text" class="form-control" value="<?= isset($user_info) ? $user_info['u_surname'] : '' ?>" name="user-surname" placeholder="Фамілія" required="required">
+                                   <input type="text" class="form-control" value="<?= isset($user_info) ? $user_info['last_name'] : '' ?>" name="user-surname" placeholder="Фамілія" required="required">
                                </p>
                                <p>
                                    <label for="user-phone">Телефон:</label>
-                                   <input type="tel" class="form-control"  value="<?= isset($user_info) ? $user_info['u_phone'] : '' ?>" name="user-phone" placeholder="050 000 00 00" required="required">
+                                   <input type="tel" class="form-control"  value="<?= isset($user_info) ? $user_info['phone'] : '' ?>" name="user-phone" placeholder="050 000 00 00" required="required">
                                </p>
                                <p>
                                     <label for="district">Область:</label>

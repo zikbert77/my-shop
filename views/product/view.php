@@ -51,15 +51,11 @@
                                <div class="col-md-5">
 
                                    <div class="fotorama" data-nav="thumbs" data-allowfullscreen="true">
-                                       
-                                   <?php for($i=0; $i < count($images); $i++){
-                                       
-                                      echo '<img src="' . $images[$i] . '" alt="'.$title.'">';
-                                       
-                                   }
-                                   
-                                   ?>
-           
+                                        <?php if ($images): ?>
+                                            <?php foreach ($images as $image): ?>
+                                                <img src="<?= $image ?>" alt="<?= $title ?>">
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
                                     </div>
                                </div>
                                <div class="col-md-7">
@@ -67,15 +63,15 @@
                                        <table class="table table-bordered">
                                           <tr>
                                                <td>Тип:</td>
-                                               <td><?php echo $product_info['category']['cat_name']; ?></td>
+                                               <td><?= $product_info['category']['title']; ?></td>
                                           </tr>
                                           <tr>
                                                <td>Виробник:</td>
-                                               <td><?php echo $product_info['brand_name']; ?></td>
+                                               <td><?= $product_info['brand_name']; ?></td>
                                            </tr>
                                            <tr>
                                                <td>Країна:</td>
-                                               <td><?php echo $product_info['country']; ?></td>
+                                               <td><?= $product_info['country']; ?></td>
                                            </tr>
                                        </table>
                                    </div>
@@ -113,7 +109,7 @@
                                                    ?>
                                                </select>
                                                <br>
-                                               <?php if(Cart::checkProduct($product_info['product_id'])): ?>
+                                               <?php if(Cart::checkProduct($product_info['id'])): ?>
                                                     <button type="submit" name="addProduct" class="btn btn-success btn-block"><i class="fa fa-check" aria-hidden="true"></i> Куплено</button>
                                                     
                                                <?php else: ?>
